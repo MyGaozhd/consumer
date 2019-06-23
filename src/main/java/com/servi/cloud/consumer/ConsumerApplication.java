@@ -5,6 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ * 服务提供者
+ */
 @SpringBootApplication
 public class ConsumerApplication {
 
