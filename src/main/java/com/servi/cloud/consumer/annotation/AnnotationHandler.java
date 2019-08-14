@@ -1,19 +1,59 @@
 package com.servi.cloud.consumer.annotation;
 
+import com.servi.cloud.consumer.util.log.ServiLogger;
+
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
 public class AnnotationHandler implements InvocationHandler {
 
-    private final Object tatarget;
+    private final Object target;
 
     public AnnotationHandler(Object tatarget) {
-        this.tatarget = tatarget;
+        this.target = tatarget;
     }
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        Object result = method.invoke(tatarget, args);
+        checkTarget(target);
+        checkMethod(method);
+        Method[] methods = target.getClass().getDeclaredMethods();
+        for (int i = 0; i < methods.length; i++) {
+            checkMethod(methods[i]);
+        }
+
+        Field[] fields = target.getClass().getDeclaredFields();
+        for (int i = 0; i < fields.length; i++) {
+            checkField(fields[i]);
+        }
+        Object result = method.invoke(target, args);
         return result;
+    }
+
+    private void checkTarget(Object target) {
+        if (target.getClass().isAnnotationPresent(ClassCheck.class)) {
+            ClassCheck classCheck = target.getClass().getAnnotation(ClassCheck.class);
+            ServiLogger.log("checkTarget:" + target.getClass().getCanonicalName() + "-" + classCheck.check());
+            ServiLogger.log("checkTarget:" + target.getClass().getCanonicalName() + "-" + classCheck.value());
+        }
+    }
+
+    private void checkMethod(Method method) {
+        if (method.isAnnotationPresent(MethodCheck.class)) {
+            MethodCheck methodCheck = method.getAnnotation(MethodCheck.class);
+            ServiLogger.log("checkMethod:" + method.getName() + "-" + methodCheck.check());
+            ServiLogger.log("checkMethod:" + method.getName() + "-" + methodCheck.value());
+        } else {
+            ServiLogger.log("checkMethod:" + method.getName() + "- 未使用注解");
+        }
+    }
+
+    private void checkField(Field field) {
+        if (field.isAnnotationPresent(FieldCheck.class)) {
+            FieldCheck fieldCheck = field.getAnnotation(FieldCheck.class);
+            ServiLogger.log("checkField:" + field.getName() + "-" + fieldCheck.check());
+            ServiLogger.log("checkField:" + field.getName() + "-" + fieldCheck.value());
+        }
     }
 }
