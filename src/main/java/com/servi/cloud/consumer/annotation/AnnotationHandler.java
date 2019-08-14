@@ -40,6 +40,7 @@ public class AnnotationHandler implements InvocationHandler {
     }
 
     private void checkMethod(Method method) {
+        method.isAccessible();
         if (method.isAnnotationPresent(MethodCheck.class)) {
             MethodCheck methodCheck = method.getAnnotation(MethodCheck.class);
             ServiLogger.log("checkMethod:" + method.getName() + "-" + methodCheck.check());
@@ -49,11 +50,21 @@ public class AnnotationHandler implements InvocationHandler {
         }
     }
 
-    private void checkField(Field field) {
-        if (field.isAnnotationPresent(FieldCheck.class)) {
-            FieldCheck fieldCheck = field.getAnnotation(FieldCheck.class);
-            ServiLogger.log("checkField:" + field.getName() + "-" + fieldCheck.check());
-            ServiLogger.log("checkField:" + field.getName() + "-" + fieldCheck.value());
+    private void checkField(Field field) throws IllegalAccessException {
+        field.setAccessible(true);
+        if (!field.isAnnotationPresent(FieldCheck.class)) {
+            ServiLogger.log("checkField:" + field.getName() + "- 未使用注解");
+            return;
         }
+
+        FieldCheck fieldCheck = field.getAnnotation(FieldCheck.class);
+        ServiLogger.log("checkField:" + field.getName() + "-" + fieldCheck.check());
+        ServiLogger.log("checkField:" + field.getName() + "-" + fieldCheck.value());
+
+
+        if (fieldCheck.check() && null == field.get(target)) {
+            field.set(target, fieldCheck.value());
+        }
+        ServiLogger.log(field.getName() + ":" + field.get(target));
     }
 }
