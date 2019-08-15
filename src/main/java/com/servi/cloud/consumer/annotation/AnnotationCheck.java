@@ -10,7 +10,9 @@ public class AnnotationCheck implements IAnnotationCheck {
 
     public static void main(String[] args) {
 
-        AnnotationProxy.find(IAnnotationCheck.class).doAnnotationCheck();
+        AnnotationProxy.find(IAnnotationCheck.class).doAnnotationCheck("LLLLLLLLLLLLL");
+
+        AnnotationProxy.find(IAnnotationCheck.class).unDoAnnotationCheck("LLLLLLLLLLLLL");
     }
 
     @FieldCheck(check = false, value = "fieldCheck1")
@@ -54,7 +56,12 @@ public class AnnotationCheck implements IAnnotationCheck {
     }
 
     @Override
-    public void doAnnotationCheck() {
-        ServiLogger.log("doAnnotationCheck");
+    public void doAnnotationCheck(String value) {
+        ServiLogger.log("doAnnotationCheck：" + value);
+    }
+
+    @Override
+    public void unDoAnnotationCheck(String value) {
+        ServiLogger.log("unDoAnnotationCheck：" + value);
     }
 }
