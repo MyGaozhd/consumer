@@ -3,12 +3,14 @@ package com.servi.cloud.consumer.algorithm;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 斐波那契数列
+ */
 public class FB {
 
     public static void main(String[] args) {
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 20; i++) {
             System.out.print(add(i) + " ");
-            System.out.println("i: " + i);
         }
 
     }
