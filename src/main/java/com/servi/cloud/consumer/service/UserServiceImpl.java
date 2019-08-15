@@ -1,4 +1,4 @@
-package com.servi.cloud.consumer.Service;
+package com.servi.cloud.consumer.service;
 
 import com.servi.cloud.consumer.dao.IUserDao;
 import com.servi.cloud.consumer.entry.User;
