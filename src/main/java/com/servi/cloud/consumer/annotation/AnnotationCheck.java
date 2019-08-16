@@ -6,7 +6,7 @@ import com.servi.cloud.consumer.util.log.ServiLogger;
  * 注解测试类
  */
 @ClassCheck(check = true, value = "a")
-public class AnnotationCheck implements IAnnotationCheck {
+public class AnnotationCheck extends BaseAnnotationCheck implements IAnnotationCheck {
 
     public static void main(String[] args) {
 

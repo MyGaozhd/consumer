@@ -61,10 +61,26 @@ public class AnnotationHandler implements InvocationHandler {
     }
 
     private void checkTarget(Object target) {
-        if (target.getClass().isAnnotationPresent(ClassCheck.class)) {
-            ClassCheck classCheck = target.getClass().getAnnotation(ClassCheck.class);
-            ServiLogger.log("checkTarget:" + target.getClass().getCanonicalName() + "-" + classCheck.check());
-            ServiLogger.log("checkTarget:" + target.getClass().getCanonicalName() + "-" + classCheck.value());
+        Annotation[] annotations = target.getClass().getAnnotations();
+        ServiLogger.log("所有注解：" + ArrayUtils.toString(annotations));
+        if (!target.getClass().isAnnotationPresent(ClassCheck.class)) {
+            return;
+        }
+
+        ClassCheck classCheck = target.getClass().getAnnotation(ClassCheck.class);
+        ServiLogger.log("checkTarget:" + target.getClass().getCanonicalName() + "-" + classCheck.check());
+        ServiLogger.log("checkTarget:" + target.getClass().getCanonicalName() + "-" + classCheck.value());
+
+        if (classCheck.getClass().isAnnotationPresent(AnnotationClass.class)) {
+            AnnotationClass annotationClass = classCheck.getClass().getAnnotation(AnnotationClass.class);
+            ServiLogger.log("checkTarget-AnnotationClass:" + annotationClass.getClass().getCanonicalName() + "-" );
+        } else {
+
+        }
+
+        if (target.getClass().isAnnotationPresent(AbstractAnnotionCheck.class)) {
+            AbstractAnnotionCheck annotationClass = target.getClass().getAnnotation(AbstractAnnotionCheck.class);
+            ServiLogger.log("checkTarget-AbstractAnnotionCheck:" + annotationClass.getClass().getCanonicalName() + "- kkk" );
         }
     }
 
