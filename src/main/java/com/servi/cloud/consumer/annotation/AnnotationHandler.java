@@ -71,11 +71,9 @@ public class AnnotationHandler implements InvocationHandler {
         ServiLogger.log("checkTarget:" + target.getClass().getCanonicalName() + "-" + classCheck.check());
         ServiLogger.log("checkTarget:" + target.getClass().getCanonicalName() + "-" + classCheck.value());
 
-        if (classCheck.getClass().isAnnotationPresent(AnnotationClass.class)) {
-            AnnotationClass annotationClass = classCheck.getClass().getAnnotation(AnnotationClass.class);
+        if (target.getClass().isAnnotationPresent(AnnotationClass.class)) {
+            AnnotationClass annotationClass = target.getClass().getAnnotation(AnnotationClass.class);
             ServiLogger.log("checkTarget-AnnotationClass:" + annotationClass.getClass().getCanonicalName() + "-" );
-        } else {
-
         }
 
         if (target.getClass().isAnnotationPresent(AbstractAnnotionCheck.class)) {
