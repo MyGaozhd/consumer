@@ -14,3 +14,7 @@ spring:
     port: 5672
     username: sty1
     password: sty
+  cloud:
+    config:
+      profile: prod
+      uri: http://localhost:9006/

@@ -1,5 +1,6 @@
 package com.servi.cloud.consumer.controller;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -7,9 +8,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/consumer")
 public class EasyController {
 
-    @RequestMapping(value = "/test",method = RequestMethod.GET)
-    public String test(){
+    @Value("${clientParam}")
+    private String clientParam;
 
-        return "id="+System.currentTimeMillis();
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    public String test() {
+
+        return "clientParam：" + clientParam + " id=" + System.currentTimeMillis();
     }
 }
