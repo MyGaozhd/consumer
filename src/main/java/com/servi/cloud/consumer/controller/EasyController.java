@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 public class EasyController {
 
     @Value("${clientParam}")
-    private String clientParam;
+    String clientParam;
 
     @RequestMapping(value = "/test", method = RequestMethod.GET)
     public String test() {

@@ -1,11 +1,5 @@
 server:
   port: 9002
-eureka:
-  instance:
-    prefer-ip-address: true
-  client:
-    service-url:
-     defaultZone: http://localhost:8888/eureka/
 spring:
   application:
     name: consumer
@@ -14,7 +8,3 @@ spring:
     port: 5672
     username: sty1
     password: sty
-  cloud:
-    config:
-      profile: prod
-      uri: http://localhost:9006/

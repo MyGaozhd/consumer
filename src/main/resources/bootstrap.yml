@@ -1,0 +1,15 @@
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+     defaultZone: http://localhost:8888/eureka/
+spring:
+  application:
+    name: consumer
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: config
+      profile: prod
