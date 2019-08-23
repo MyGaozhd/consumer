@@ -51,6 +51,15 @@ public interface IZClient {
     public <T> T readData(String path, Class<T> clazz);
 
     /**
+     * 写数据
+     *
+     * @param path
+     * @param t
+     * @param <T>
+     */
+    public <T> void writeData(String path, T t);
+
+    /**
      * 指定节点是否存在
      *
      * @param path
@@ -62,4 +71,40 @@ public interface IZClient {
      * 关闭连接
      */
     public void close();
+
+    /**
+     * 节点变更监听
+     *
+     * @param path
+     * @param listener
+     */
+    public void addNodeChangeListener(String path, NodeChangeListener listener);
+
+    /**
+     * 节点数据变更监听
+     *
+     * @param path
+     * @param listener
+     */
+    public void addNodeDataChangeListener(String path, NodeDataChangeListener listener);
+
+    /**
+     * 节点变更监听
+     */
+    public interface NodeChangeListener {
+
+        public void onChange(String path);
+    }
+
+    /**
+     * 节点数据变更监听
+     */
+    public interface NodeDataChangeListener {
+
+        public void onChange(String path);
+
+        public void onDelete(String path);
+    }
+
+
 }
