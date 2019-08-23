@@ -27,6 +27,15 @@ public class ZClient implements IZClient {
         }
         ServiLogger.log("临时节点：" + zClient.readData(ePath));
 
+        //4、删除临时节点
+        if (zClient.exists(ePath)) {
+            ServiLogger.log("删除临时节点：" + ePath);
+            zClient.delete(ePath);
+        }
+
+        if (zClient.exists(ePath)) {
+            ServiLogger.log("临时节点：" + zClient.readData(ePath));
+        }
         zClient.close();
     }
 
