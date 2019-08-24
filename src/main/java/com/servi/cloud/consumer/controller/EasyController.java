@@ -13,6 +13,10 @@ public class EasyController {
 
     @Value("${clientParam}")
     String clientParam;
+
+    @Value("${zkpath}")
+    String zkpath;
+
     @Autowired
     IZClient zClient;
 
@@ -24,9 +28,6 @@ public class EasyController {
 
     @RequestMapping(value = "/zktest", method = RequestMethod.GET)
     public String zkTest() {
-
-        //1、创建servi节点
-        zClient.createEphemeral("/servi","servi");
-        return  zClient.readData("servi");
+        return zkpath;
     }
 }
