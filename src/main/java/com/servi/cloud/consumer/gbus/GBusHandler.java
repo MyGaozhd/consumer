@@ -21,7 +21,10 @@ public class GBusHandler implements InvocationHandler {
         String methodName = gBus.method();
 
         Method operateMethod = target.getClass().getDeclaredMethod(methodName, method.getParameterTypes());
-
-        return  operateMethod.invoke(target, args);
+        IRequestAdapter requestAdapter = gBus.requestAdapter().newInstance();
+        Object[] operateArgs = requestAdapter.getParam(args);
+        Object result = operateMethod.invoke(target, operateArgs);
+        IResponseAdapter responseAdapter = gBus.responseAdapter().newInstance();
+        return responseAdapter.getResponse(result);
     }
 }

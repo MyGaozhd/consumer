@@ -1,6 +1,5 @@
 package com.servi.cloud.consumer.gbus.test;
 
-import com.servi.cloud.consumer.gbus.GBusInterface;
 import com.servi.cloud.consumer.gbus.GBusRouter;
 import com.servi.cloud.consumer.util.log.ServiLogger;
 
