@@ -8,3 +8,8 @@ spring:
     port: 5672
     username: sty1
     password: sty
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
