@@ -1,9 +1,6 @@
 package com.servi.cloud.consumer.gbus.test;
 
-import java.lang.reflect.Method;
-
 import com.servi.cloud.consumer.gbus.annotation.GBus;
-import com.servi.cloud.consumer.gbus.test.IGBusTest;
 
 public interface GBusInterface {
 

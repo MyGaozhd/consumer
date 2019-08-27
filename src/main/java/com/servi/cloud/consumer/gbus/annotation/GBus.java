@@ -2,9 +2,7 @@ package com.servi.cloud.consumer.gbus.annotation;
 
 import com.servi.cloud.consumer.gbus.IRequestAdapter;
 import com.servi.cloud.consumer.gbus.IResponseAdapter;
-
 import java.lang.annotation.RetentionPolicy;
-
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
@@ -17,8 +15,7 @@ public @interface GBus {
 
     public String method();
 
-    public Class<? extends IRequestAdapter> requestAdapter();
+    public Class<? extends IRequestAdapter> requestAdapter() default IRequestAdapter.DefaultRequestAdapter.class;
 
-    public Class<? extends IResponseAdapter> responseAdapter();
-
+    public Class<? extends IResponseAdapter> responseAdapter() default IResponseAdapter.DefaultResponseAdapter.class;
 }
