@@ -2,8 +2,10 @@ package com.servi.cloud.consumer.util.proxy.jdk;
 
 import sun.misc.ProxyGenerator;
 
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
 
@@ -11,6 +13,7 @@ public class Test {
 
     /**
      * 保存 JDK 动态代理生产的类
+     *
      * @param filePath 保存路径，默认在项目路径下生成 $Proxy0.class 文件
      */
     private static void saveProxyFile(String... filePath) {
