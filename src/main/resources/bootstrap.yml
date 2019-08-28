@@ -1,6 +1,7 @@
 eureka:
   instance:
     prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.inetutils.default-ip-address}:${spring.application.instance-id:${server.port}}
   client:
     service-url:
      defaultZone: http://localhost:8888/eureka/
@@ -13,3 +14,5 @@ spring:
         enabled: true
         service-id: config
       profile: prod
+    inetutils:
+      default-ip-address: 127.0.0.1
