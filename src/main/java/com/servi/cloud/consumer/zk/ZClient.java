@@ -4,6 +4,7 @@ import com.servi.cloud.consumer.util.log.ServiLogger;
 import org.I0Itec.zkclient.IZkChildListener;
 import org.I0Itec.zkclient.IZkDataListener;
 import org.I0Itec.zkclient.ZkClient;
+import org.apache.zookeeper.ZooKeeper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -13,6 +14,7 @@ import java.util.List;
 public class ZClient implements IZClient {
 
     public static void main(String[] args) {
+        ZooKeeper zl;
         IZClient zClient = new ZClient();
         String path = "/servi";
         //0、设置监听事件

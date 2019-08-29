@@ -2,9 +2,11 @@ eureka:
   instance:
     prefer-ip-address: true
     instance-id: ${spring.application.name}:${spring.cloud.inetutils.default-ip-address}:${spring.application.instance-id:${server.port}}
+    metadata-map:
+      token: 123456a
   client:
     service-url:
-     defaultZone: http://localhost:8888/eureka/
+     defaultZone: http://localhost:8888/eureka
 spring:
   application:
     name: consumer
