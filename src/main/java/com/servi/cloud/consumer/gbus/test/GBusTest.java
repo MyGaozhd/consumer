@@ -7,6 +7,12 @@ public class GBusTest implements IGBusTest {
     public static void main(String[] args) {
         String a = GBusRouter.operate(GBusInterface.class).test("a", "b");
         ServiLogger.log(a);
+
+        String b = GBusRouter.operate(GBusInterface.class).test1("a", "b");
+        ServiLogger.log(b);
+
+        String c = GBusRouter.operate(GBusInterface.class).test2("a", "b");
+        ServiLogger.log(c);
     }
 
     @Override
