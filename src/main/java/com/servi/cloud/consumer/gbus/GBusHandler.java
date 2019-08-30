@@ -15,14 +15,16 @@ public class GBusHandler implements InvocationHandler {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         GBusInterface gi = null;
-
-        Class<?>[] is = proxy.getClass().getInterfaces();
-        for (int i = 0; i < is.length; i++) {
-            if (is[i].isAnnotationPresent(GBusInterface.class)) {
-                gi = is[i].getAnnotation(GBusInterface.class);
+        if (method.isAnnotationPresent(GBusInterface.class)) {
+            gi = method.getAnnotation(GBusInterface.class);
+        }else {
+            Class<?>[] is = proxy.getClass().getInterfaces();
+            for (int i = 0; i < is.length; i++) {
+                if (is[i].isAnnotationPresent(GBusInterface.class)) {
+                    gi = is[i].getAnnotation(GBusInterface.class);
+                }
             }
         }
-
         GBusMethod gBus = method.getAnnotation(GBusMethod.class);
         Class<?> clazz = gi.clazz();
 
