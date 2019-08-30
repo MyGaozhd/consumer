@@ -6,6 +6,7 @@ import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class ThreadPoolTest {
+    ThreadLocal<Integer> threadLocal = new ThreadLocal<>();
     private int count = 1;
     ExecutorService service = new ThreadPoolExecutor(count, count * 2,
             0L, TimeUnit.MILLISECONDS,
@@ -14,12 +15,23 @@ public class ThreadPoolTest {
         public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
             if (r instanceof TestRunnable) {
                 ServiLogger.log("拒绝当前任务：" + ((TestRunnable) r).getCount());
-                if (((TestRunnable) r).getCount() % 0 == 0) {
-
-                }
             }
         }
-    });
+    }) {
+        @Override
+        protected void beforeExecute(Thread t, Runnable r) {
+            super.beforeExecute(t, r);
+            threadLocal.set(((TestRunnable) r).getCount());
+            ServiLogger.log("beforeExecute：" + threadLocal.get());
+        }
+
+        @Override
+        protected void afterExecute(Runnable r, Throwable t) {
+            super.afterExecute(r, t);
+            threadLocal.remove();
+            ServiLogger.log("afterExecute：" + threadLocal.get());
+        }
+    };
 
     public void submit(Runnable r) {
 //        service.submit(r);
@@ -29,7 +41,7 @@ public class ThreadPoolTest {
     public static void main(String[] args) throws InterruptedException {
         ThreadPoolTest pool = new ThreadPoolTest();
         for (int i = 0; i < 10; i++) {
-//            Thread.sleep(500);
+            Thread.sleep(500);
             pool.submit(new TestRunnable(i));
         }
 
@@ -49,12 +61,6 @@ public class ThreadPoolTest {
 
         @Override
         public void run() {
-            ServiLogger.log("执行当前任务：" + count);
-//            if (count % 2 == 0) {
-                if (count % 0 == 0) {
-
-                }
-//            }
             ServiLogger.log("执行当前任务：" + count);
         }
     }
