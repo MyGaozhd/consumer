@@ -10,14 +10,7 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface GBus {
-
-    /**
-     * 需要调用的远程接口
-     *
-     * @return
-     */
-    public Class<?> clazz();
+public @interface GBusMethod {
 
     /**
      * 需要调用的远程接口方法名称

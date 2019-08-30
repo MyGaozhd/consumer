@@ -1,6 +1,7 @@
 package com.servi.cloud.consumer.gbus;
 
-import com.servi.cloud.consumer.gbus.annotation.GBus;
+import com.servi.cloud.consumer.gbus.annotation.GBusInterface;
+import com.servi.cloud.consumer.gbus.annotation.GBusMethod;
 import com.servi.cloud.consumer.gbus.test.GBusTest;
 import com.servi.cloud.consumer.gbus.test.IGBusTest;
 import org.apache.commons.lang.StringUtils;
@@ -13,8 +14,17 @@ public class GBusHandler implements InvocationHandler {
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        GBus gBus = method.getAnnotation(GBus.class);
-        Class<?> clazz = gBus.clazz();
+        GBusInterface gi = null;
+
+        Class<?>[] is = proxy.getClass().getInterfaces();
+        for (int i = 0; i < is.length; i++) {
+            if (is[i].isAnnotationPresent(GBusInterface.class)) {
+                gi = is[i].getAnnotation(GBusInterface.class);
+            }
+        }
+
+        GBusMethod gBus = method.getAnnotation(GBusMethod.class);
+        Class<?> clazz = gi.clazz();
 
         if (clazz == IGBusTest.class) {
             target = new GBusTest();
