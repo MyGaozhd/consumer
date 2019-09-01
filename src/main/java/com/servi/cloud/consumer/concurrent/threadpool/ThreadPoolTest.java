@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class ThreadPoolTest {
     ThreadLocal<Integer> threadLocal = new ThreadLocal<>();
     private int count = 1;
-    ExecutorService service = new ThreadPoolExecutor(count, count * 2,
+    ThreadPoolExecutor service = new ThreadPoolExecutor(count, count * 2,
             0L, TimeUnit.MILLISECONDS,
             new ArrayBlockingQueue<>(2), new DefaultThreadFactory(), new RejectedExecutionHandler() {
         @Override
