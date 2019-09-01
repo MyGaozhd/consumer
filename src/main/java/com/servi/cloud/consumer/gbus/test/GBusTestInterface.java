@@ -6,7 +6,7 @@ import com.servi.cloud.consumer.gbus.annotation.GBusMethod;
 @GBusInterface(clazz = IGBusTest.class)
 public interface GBusTestInterface {
 
-    @GBusMethod
+    @GBusMethod(clazz = IGBusTest.class)
     public String test(String a, String b);
 
     @GBusMethod(method = "test", requestAdapter = GBusTestRequest.class, responseAdapter = GBusTestResponse.class)

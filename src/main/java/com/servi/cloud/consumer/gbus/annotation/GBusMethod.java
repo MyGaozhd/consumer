@@ -13,6 +13,13 @@ import java.lang.annotation.Target;
 public @interface GBusMethod {
 
     /**
+     * 需要调用的远程接口
+     *
+     * @return
+     */
+    public Class<?> clazz() default void.class;
+
+    /**
      * 需要调用的远程接口方法名称
      * 如果不配置方法名称，默认走接口定义的方法名称
      *

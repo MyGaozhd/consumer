@@ -14,23 +14,11 @@ public class GBusHandler implements InvocationHandler {
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        GBusInterface gi = null;
-        if (method.isAnnotationPresent(GBusInterface.class)) {
-            gi = method.getAnnotation(GBusInterface.class);
-        }else {
-            Class<?>[] is = proxy.getClass().getInterfaces();
-            for (int i = 0; i < is.length; i++) {
-                if (is[i].isAnnotationPresent(GBusInterface.class)) {
-                    gi = is[i].getAnnotation(GBusInterface.class);
-                }
-            }
-        }
-        GBusMethod gBus = method.getAnnotation(GBusMethod.class);
-        Class<?> clazz = gi.clazz();
 
-        if (clazz == IGBusTest.class) {
-            target = new GBusTest();
-        }
+        target = target(proxy, method);
+
+        GBusMethod gBus = method.getAnnotation(GBusMethod.class);
+
         //1、如果没有设置方法名称，使用代理接口定义的代理方法名称
         String methodName = StringUtils.isEmpty(gBus.method()) ? method.getName() : gBus.method();
 
@@ -50,5 +38,44 @@ public class GBusHandler implements InvocationHandler {
         //5、调用返回值转换器，转换返回值
         IResponseAdapter responseAdapter = gBus.responseAdapter().newInstance();
         return responseAdapter.getResponse(result);
+    }
+
+    /**
+     * target
+     *
+     * @param proxy
+     * @param method
+     * @return
+     */
+    private Object target(Object proxy, Method method) {
+
+        if (!method.isAnnotationPresent(GBusMethod.class)) {
+            throw new IllegalArgumentException("非法的方法");
+        }
+        Class<?> clazz = null;
+        GBusMethod gBusMethod = method.getAnnotation(GBusMethod.class);
+
+        if (gBusMethod.clazz() == void.class) {
+            GBusInterface gBusInterface = null;
+            if (method.isAnnotationPresent(GBusInterface.class)) {
+                gBusInterface = method.getAnnotation(GBusInterface.class);
+            } else {
+                Class<?>[] is = proxy.getClass().getInterfaces();
+                for (int i = 0; i < is.length; i++) {
+                    if (is[i].isAnnotationPresent(GBusInterface.class)) {
+                        gBusInterface = is[i].getAnnotation(GBusInterface.class);
+                    }
+                }
+            }
+            clazz = gBusInterface.clazz();
+        } else {
+            clazz = gBusMethod.clazz();
+        }
+
+        if (clazz == IGBusTest.class) {
+            target = new GBusTest();
+        }
+
+        return target;
     }
 }
