@@ -19,7 +19,6 @@ import org.springframework.web.client.RestTemplate;
  */
 @EnableEurekaClient
 @EnableCircuitBreaker
-//@EnableHystrix
 @EnableHystrixDashboard
 @ServletComponentScan
 @EnableFeignClients(basePackages = {"com.servi.cloud.consumer.feign"})
@@ -36,16 +35,6 @@ public class ConsumerApplication {
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }
-
-//    @Bean
-//    public ServletRegistrationBean getServlet() {
-//        HystrixMetricsStreamServlet streamServlet = new HystrixMetricsStreamServlet();
-//        ServletRegistrationBean registrationBean = new ServletRegistrationBean(streamServlet);
-//        registrationBean.setLoadOnStartup(1);
-//        registrationBean.addUrlMappings("/hystrix.stream");
-//        registrationBean.setName("HystrixMetricsStreamServlet");
-//        return registrationBean;
-//    }
 
     public static void main(String[] args) {
         SpringApplication.run(ConsumerApplication.class, args);
