@@ -1,4 +1,5 @@
 package com.servi.cloud.consumer.eureka;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -18,6 +19,7 @@ public class EurekaTestController {
     DiscoveryClient discoveryClient;
 
     @GetMapping("/getclient")
+    @HystrixCommand
     public List<ServiceInstance> getDiscoveryClient() {
         return discoveryClient.getInstances("consumer");
     }

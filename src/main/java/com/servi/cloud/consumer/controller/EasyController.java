@@ -1,5 +1,6 @@
 package com.servi.cloud.consumer.controller;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.servi.cloud.consumer.zk.IZClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,6 +22,7 @@ public class EasyController {
     IZClient zClient;
 
     @RequestMapping(value = "/test", method = RequestMethod.GET)
+    @HystrixCommand
     public String test() {
 
         return "clientParam：" + clientParam + " id=" + System.currentTimeMillis();
