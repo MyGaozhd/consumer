@@ -34,8 +34,8 @@ public class ThreadPoolTest {
     };
 
     public void submit(Runnable r) {
-//        service.submit(r);
-        service.execute(r);
+       service.submit(r);
+       service.execute(r);
     }
 
     public static void main(String[] args) throws InterruptedException {

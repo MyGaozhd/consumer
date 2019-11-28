@@ -11,5 +11,11 @@ public class Test {
         };
 
         System.out.println(iThreadLocal.getValue());
+        System.out.println(a());
+    }
+
+    private static String a(){
+String a ="1";
+return a="2";
     }
 }
