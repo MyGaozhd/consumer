@@ -27,8 +27,22 @@ public class GBusHandler implements InvocationHandler {
         if (gBus.autoParameterType()) {
             operateMethod = target.getClass().getDeclaredMethod(methodName, method.getParameterTypes());
         } else {
-            operateMethod = target.getClass().getDeclaredMethod(methodName, gBus.parameterTypes());
+            Class<?>[] parameterTypes = gBus.parameterTypes();
+            if (parameterTypes != null) {
+                operateMethod = target.getClass().getDeclaredMethod(methodName, gBus.parameterTypes());
+            } else {
+                Method[] operateMethods = target.getClass().getDeclaredMethods();
+                for (int i = 0; i < operateMethods.length; i++) {
+                    if (methodName.equals(operateMethods[i].getName())) {
+                        operateMethod = target.getClass().getMethod(methodName);
+                    }
+                }
+            }
         }
+        if (operateMethod == null){
+
+        }
+
         //3、调用请求参数转换器，转换请求参数
         IRequestAdapter requestAdapter = gBus.requestAdapter().newInstance();
         Object[] operateArgs = requestAdapter.getParam(args);
