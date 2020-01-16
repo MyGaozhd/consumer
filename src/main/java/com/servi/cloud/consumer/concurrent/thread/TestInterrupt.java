@@ -1,18 +1,14 @@
 package com.servi.cloud.consumer.concurrent.thread;
 
 /**
- * sleep
- * id
+ * Interrupt
  */
-public class TestSleep {
+public class TestInterrupt {
     public static void main(String[] args) throws InterruptedException {
         MyThread thread = new MyThread("mythread");
-//        thread.setName("kkk");
         System.out.println("执行开始：" + thread.isAlive());
         thread.start();
-        thread.getId();
-//        thread.run();+
-        Thread.sleep(1000);
+        thread.interrupt();
         System.out.println("执行结束：" + thread.isAlive());
     }
 
@@ -20,15 +16,14 @@ public class TestSleep {
 
         MyThread(String name) {
             setName(name);
-            System.out.println("MyThread 构造方法：" + this.isAlive());
         }
 
         @Override
         public void run() {
             super.run();
-            System.out.println("MyThread run方法：" + this.currentThread().isAlive());
-            System.out.println("MyThread run方法--：" + this.isAlive());
-            System.out.println("mythread 执行结束。");
+            for (int i = 0; i <500 ; i++) {
+                System.out.println("MyThread run方法：" + i);
+            }
         }
     }
 
