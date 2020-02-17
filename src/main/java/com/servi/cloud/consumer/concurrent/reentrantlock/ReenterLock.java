@@ -2,6 +2,7 @@ package com.servi.cloud.consumer.concurrent.reentrantlock;
 
 import com.servi.cloud.consumer.util.log.ServiLogger;
 
+import java.util.ArrayList;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class ReenterLock implements Runnable {
@@ -24,11 +25,12 @@ public class ReenterLock implements Runnable {
     public static void main(String[] args) throws InterruptedException {
         ReenterLock lock = new ReenterLock();
         Thread t1 = new Thread(lock);
-        Thread t2 = new Thread(lock);
+//        Thread t2 = new Thread(lock);
         t1.start();
-        t2.start();
+//        t2.start();
         t1.join();
-        t2.join();
+//        t2.join();
         ServiLogger.log(i);
+
     }
 }

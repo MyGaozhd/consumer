@@ -1,6 +1,7 @@
 package com.servi.cloud.consumer.algorithm;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 只出现一次的数字
@@ -32,7 +33,7 @@ public class _1 {
         if (nums == null) return 0;
         if (nums.length == 1) return nums[0];
 
-        HashMap<Integer, Integer> h = new HashMap<>();
+        Map<Integer, Integer> h = new HashMap<>();
 
         for (int a : nums) {
             if (h.containsKey(a)) {
