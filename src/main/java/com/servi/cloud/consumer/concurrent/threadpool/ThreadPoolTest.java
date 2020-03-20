@@ -21,7 +21,9 @@ public class ThreadPoolTest {
         @Override
         protected void beforeExecute(Thread t, Runnable r) {
             super.beforeExecute(t, r);
-            threadLocal.set(((TestRunnable) r).getCount());
+            if (r instanceof TestRunnable) {
+                threadLocal.set(((TestRunnable) r).getCount());
+            }
             ServiLogger.log("beforeExecute：" + threadLocal.get());
         }
 
@@ -35,14 +37,28 @@ public class ThreadPoolTest {
 
     public void submit(Runnable r) {
 //       service.submit(r);
-       service.execute(r);
+        service.execute(r);
+    }
+
+
+    public <E> FutureTask<E> execute(Callable<E> c) {
+
+        FutureTask<E> future = new SSCFutureTask<E>(c);
+        service.execute(future);
+        return future;
     }
 
     public static void main(String[] args) throws InterruptedException {
         ThreadPoolTest pool = new ThreadPoolTest();
         for (int i = 0; i < 10; i++) {
             Thread.sleep(500);
-            pool.submit(new TestRunnable(i));
+            FutureTask task = pool.execute(new AsyncRequestCallable(i));
+            try {
+                System.out.println("结果：" + task.get() + "");
+
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
         }
 
         Thread.sleep(3000);
@@ -62,6 +78,51 @@ public class ThreadPoolTest {
         @Override
         public void run() {
             ServiLogger.log("执行当前任务：" + count);
+        }
+    }
+
+    public static class AsyncRequestCallable implements Callable<Object> {
+
+        private int count;
+
+        public int getCount() {
+            return count;
+        }
+
+        public AsyncRequestCallable(int count) {
+            this.count = count;
+        }
+
+
+        @Override
+        public Object call() throws Exception {
+
+            ServiLogger.log("执行当前任务：" + count);
+            return count;
+
+        }
+    }
+
+    /**
+     * @param <V>
+     * @author gaozhdf@yonyou.com
+     * @ClassName SSCFutureTask
+     * @Description Future任务
+     * @date 2020年1月9日 下午5:46:23
+     */
+    public static final class SSCFutureTask<V> extends FutureTask<V> {
+
+        private Callable<V> c = null;
+
+        public SSCFutureTask(Callable<V> callable) {
+
+            super(callable);
+            c = callable;
+        }
+
+        public Callable<V> getC() {
+
+            return c;
         }
     }
 
