@@ -5,7 +5,14 @@ import com.servi.cloud.consumer.util.log.ServiLogger;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class ThreadPoolTest {
+/**
+ * 测试结论
+ * 线程池 在线程工厂【efaultThreadFactory】创建线程时，如果设置了setUncaughtExceptionHandler，则如果线程出现异常，会被setUncaughtExceptionHandler捕获，并在子线程中捕获，前提是执行的是 runnable，
+ * beforeExecute 和 afterExecute 内的异常同样会被setUncaughtExceptionHandler捕获
+ * 线程池 如果接受 future任务，只有在get时 捕获异常，不会被setUncaughtExceptionHandler 捕获异常。
+ *
+ */
+public class ThreadPoolCatchExceptionTest {
     ThreadLocal<Integer> threadLocal = new ThreadLocal<>();
     private int count = 1;
     ThreadPoolExecutor service = new ThreadPoolExecutor(count, count * 2,
@@ -32,6 +39,7 @@ public class ThreadPoolTest {
             super.afterExecute(r, t);
             threadLocal.remove();
             ServiLogger.log("afterExecute：" + threadLocal.get());
+//            throw  new RuntimeException();
         }
     };
 
@@ -49,7 +57,7 @@ public class ThreadPoolTest {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        ThreadPoolTest pool = new ThreadPoolTest();
+        ThreadPoolCatchExceptionTest pool = new ThreadPoolCatchExceptionTest();
         for (int i = 0; i < 10; i++) {
             Thread.sleep(500);
 //            FutureTask task = pool.execute(new AsyncRequestCallable(i));
@@ -80,6 +88,7 @@ public class ThreadPoolTest {
         @Override
         public void run() {
             ServiLogger.log("执行当前任务：" + count);
+            throw new RuntimeException();
         }
     }
 
@@ -100,7 +109,9 @@ public class ThreadPoolTest {
         public Object call() throws Exception {
 
             ServiLogger.log("执行当前任务：" + count);
-            return count;
+            throw new RuntimeException();
+//            return count;
+
         }
     }
 
