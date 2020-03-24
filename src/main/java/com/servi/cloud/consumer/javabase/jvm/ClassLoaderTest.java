@@ -7,7 +7,7 @@ public class ClassLoaderTest {
        // System.out.println(Child.str);
         //输出结果，此时用到Child的str2字段，Child类被加载，主动使用了Child类，父类也被主动适用，也被加载并初始化。：
         //System.out.println(Child.str2);
-
+        //编译期间能确认常量的值，常量值会被放到调用方法所在类的常量池中，不会初始化Parent
         System.out.println(Child.str1);
     }
 }
