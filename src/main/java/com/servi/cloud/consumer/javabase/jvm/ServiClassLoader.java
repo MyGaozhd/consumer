@@ -1,14 +1,22 @@
 package com.servi.cloud.consumer.javabase.jvm;
 
 import java.io.*;
+import java.lang.reflect.Field;
 
 public class ServiClassLoader extends ClassLoader {
 
     private String classLoaderName;
     private static final String classExtention = ".class";
+    private String path = "extend";
+
 
     public ServiClassLoader() {
         super();
+        this.classLoaderName = "com.servi.cloud.consumer.javabase.jvm.ServiClassLoader";
+    }
+
+    public ServiClassLoader(ClassLoader parent) {
+        super(parent);
         this.classLoaderName = "com.servi.cloud.consumer.javabase.jvm.ServiClassLoader";
     }
 
@@ -19,11 +27,11 @@ public class ServiClassLoader extends ClassLoader {
 
     private byte[] loadClassData(String className) {
 
-        className = className.replace(".", "/");
+        className = className.replace(".", "\\");
         InputStream in = null;
         ByteArrayOutputStream baos = null;
         try {
-            in = new FileInputStream(new File(className + classExtention));
+            in = new FileInputStream(new File(path + "\\"+ className + classExtention));
             byte[] bytes = null;
             baos = new ByteArrayOutputStream();
             int ch = 0;
@@ -58,12 +66,22 @@ public class ServiClassLoader extends ClassLoader {
     public static void main(String[] args) {
         ServiClassLoader classLoader = new ServiClassLoader();
         try {
-            Class<?> clazz = classLoader.loadClass("com.servi.cloud.consumer.javabase.jvm.ClassLoaderTest");
+            Class<?> clazz = classLoader.loadClass("Main");
+            System.out.println(clazz.hashCode());
             Object o = clazz.newInstance();
             System.out.println(o);
             System.out.println(o.getClass().getClassLoader());
-            ClassLoaderTest classLoaderTest = new ClassLoaderTest();
-            System.out.println(classLoaderTest.equals(o));
+            Field[] fields = clazz.getDeclaredFields();
+            for (int i = 0; i < fields.length; i++) {
+                System.out.println(fields[i].getName());
+            }
+            ServiClassLoader classLoader2 = new ServiClassLoader();
+            Class<?> clazz2 = classLoader2.loadClass("Main");
+            System.out.println(clazz2.hashCode());
+
+            ServiClassLoader classLoader3 = new ServiClassLoader(classLoader2);
+            Class<?> clazz3 = classLoader3.loadClass("Main");
+            System.out.println(clazz3.hashCode());
 
         } catch (Exception e) {
             e.printStackTrace();
