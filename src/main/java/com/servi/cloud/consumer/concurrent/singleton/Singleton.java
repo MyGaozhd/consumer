@@ -1,15 +1,19 @@
 package com.servi.cloud.consumer.concurrent.singleton;
 
-public class SingletonDemo {
-    private static SingletonDemo instance = null;
+public class Singleton {
+    private static Singleton instance = null;
 
-    private SingletonDemo() {
+    private Singleton() {
         System.out.println("初始化");
     }
 
-    public static SingletonDemo getInstance() {
+    public static Singleton getInstance() {
         if (instance == null) {
-            instance = new SingletonDemo();
+            synchronized (Singleton.class) {
+                if (instance == null) {
+                    instance = new Singleton();
+                }
+            }
         }
         return instance;
     }
@@ -28,7 +32,7 @@ public class SingletonDemo {
     public static void main(String[] args) {
         for (int i = 0; i < 20; i++) {
             new Thread(() -> {
-                SingletonDemo.getInstance().toString();
+                Singleton.getInstance();
             }).start();
         }
     }
