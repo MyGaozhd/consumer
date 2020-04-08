@@ -1,4 +1,4 @@
-package com.servi.cloud.consumer.javabase.jvm;
+package com.servi.cloud.consumer.javabase.jvm.classloader;
 
 import java.util.concurrent.Callable;
 

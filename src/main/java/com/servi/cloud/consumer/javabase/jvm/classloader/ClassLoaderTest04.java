@@ -1,4 +1,4 @@
-package com.servi.cloud.consumer.javabase.jvm;
+package com.servi.cloud.consumer.javabase.jvm.classloader;
 
 /**输出结果：
  * 5

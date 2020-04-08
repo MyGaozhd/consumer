@@ -1,4 +1,4 @@
-package com.servi.cloud.consumer.javabase.jvm;
+package com.servi.cloud.consumer.javabase.jvm.classloader;
 
 import java.io.*;
 import java.lang.reflect.Field;
@@ -12,12 +12,13 @@ public class ServiClassLoader extends ClassLoader {
 
     public ServiClassLoader() {
         super();
-        this.classLoaderName = "com.servi.cloud.consumer.javabase.jvm.ServiClassLoader";
+        this.classLoaderName = "com.servi.cloud.consumer.javabase.jvm.classloader.ServiClassLoader";
     }
 
     public ServiClassLoader(ClassLoader parent) {
         super(parent);
-        this.classLoaderName = "com.servi.cloud.consumer.javabase.jvm.ServiClassLoader";
+        System.out.println(parent);
+        this.classLoaderName = "com.servi.cloud.consumer.javabase.jvm.classloader.ServiClassLoader";
     }
 
     @Override

@@ -1,12 +1,12 @@
-package com.servi.cloud.consumer.javabase.jvm;
+package com.servi.cloud.consumer.javabase.jvm.classloader;
 
 /**
  * 对于数组类型来说，其类型是虚拟机运行使其生成的，表示为class [Lcom.servi.cloud.consumer.javabase.jvm.Parent2;
  *
  * 虚拟机指令参数 anewarray 创建一个数组
  *
- *public class com.servi.cloud.consumer.javabase.jvm.ClassLoaderTest02 {
- *   public com.servi.cloud.consumer.javabase.jvm.ClassLoaderTest02();
+ *public class com.servi.cloud.consumer.javabase.jvm.classloader.ClassLoaderTest02 {
+ *   public com.servi.cloud.consumer.javabase.jvm.classloader.ClassLoaderTest02();
  *     Code:
  *        0: aload_0
  *        1: invokespecial #1                  // Method java/lang/Object."<init>":()V

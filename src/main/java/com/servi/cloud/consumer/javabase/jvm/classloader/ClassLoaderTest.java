@@ -1,4 +1,4 @@
-package com.servi.cloud.consumer.javabase.jvm;
+package com.servi.cloud.consumer.javabase.jvm.classloader;
 
 public class ClassLoaderTest {
     public static void main(String[] args) {
