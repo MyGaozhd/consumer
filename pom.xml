@@ -135,6 +135,12 @@
             <version>0.10</version>
         </dependency>
 
+        <!-- java 图像处理 https://mvnrepository.com/artifact/net.coobird/thumbnailator -->
+        <dependency>
+            <groupId>net.coobird</groupId>
+            <artifactId>thumbnailator</artifactId>
+            <version>0.4.10</version>
+        </dependency>
     </dependencies>
 
 
