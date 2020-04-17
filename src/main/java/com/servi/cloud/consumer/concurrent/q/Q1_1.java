@@ -3,8 +3,8 @@ package com.servi.cloud.consumer.concurrent.q;
 /**
  * 缓存带来的可见性问题
  */
-public class Q1 {
-    boolean retry = true;
+public class Q1_1 {
+   volatile boolean retry = true;
     private void retry() {
         System.out.println(" retry start ");
         while (retry){}
@@ -12,7 +12,7 @@ public class Q1 {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        Q1 q = new Q1();
+        Q1_1 q = new Q1_1();
         // 创建线程，执行retry()操作
         Thread t1 = new Thread(q::retry);
         // 启动线程
