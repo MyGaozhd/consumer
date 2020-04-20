@@ -3,7 +3,7 @@
  */
 package com.servi.cloud.consumer.concurrent.juc.c_012_Volatile;
 
-public class T03_VolatileReference2 {
+public class T03_VolatileReference3 {
 
     private static class Data {
         int a, b;

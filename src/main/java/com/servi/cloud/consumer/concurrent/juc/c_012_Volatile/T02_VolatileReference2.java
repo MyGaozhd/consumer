@@ -5,19 +5,19 @@ package com.servi.cloud.consumer.concurrent.juc.c_012_Volatile;
 
 import java.util.concurrent.TimeUnit;
 
-public class T02_VolatileReference1 {
+public class T02_VolatileReference2 {
 
     boolean running = true;
 
-    volatile static T02_VolatileReference1 T = new T02_VolatileReference1(true);
+    volatile static T02_VolatileReference2 T = new T02_VolatileReference2(true);
 
-    public  T02_VolatileReference1 (boolean running) {
+    public T02_VolatileReference2(boolean running) {
         this.running = running;
     }
 
     void m() {
         System.out.println("m start");
-        while(running) {
+        while (T != null) {
 			/*
 			try {
 				TimeUnit.MILLISECONDS.sleep(10);
@@ -37,10 +37,7 @@ public class T02_VolatileReference1 {
             e.printStackTrace();
         }
 
-        T.running = false;
-
         // 测试 然后看现象
-//        T = new T02_VolatileReference1(false);
-//        T = null;
+        T = null;
     }
 }
