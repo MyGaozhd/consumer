@@ -4,15 +4,22 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class TestReentrantLock {
 
-    private static volatile int i = 0;
+    ReentrantLock lock = new ReentrantLock(true);
 
     public static void main(String[] args) {
-        ReentrantLock lock = new ReentrantLock();
-        lock.lock();
-        //synchronized (TestReentrantLock.class) {
-            i++;
-        //}
+        TestReentrantLock t = new TestReentrantLock();
+        new Thread(t::test).start();
+    }
 
-        lock.unlock();
+    public void test() {
+        try {
+            lock.lock();
+            Thread.sleep(5000);
+            System.out.println("111");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            lock.unlock();
+        }
     }
 }
