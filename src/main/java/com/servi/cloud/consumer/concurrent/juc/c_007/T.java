@@ -29,7 +29,5 @@ public class T {
 		T t = new T();
 		new Thread(t::m1, "t1").start();
 		new Thread(t::m2, "t2").start();
-
 	}
-	
 }

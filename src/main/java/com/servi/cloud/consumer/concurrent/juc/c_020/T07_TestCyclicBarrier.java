@@ -9,26 +9,18 @@ public class T07_TestCyclicBarrier {
 
         CyclicBarrier barrier = new CyclicBarrier(20, () -> System.out.println("人满了"));
 
-        /*CyclicBarrier barrier = new CyclicBarrier(20, new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("人满，开车");
-            }
-        });*/
+        for (int i = 0; i < 100; i++) {
 
-        for(int i=0; i<100; i++) {
+            new Thread(() -> {
+                try {
+                    barrier.await();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (BrokenBarrierException e) {
+                    e.printStackTrace();
+                }
+            }, "thread-" + i).start();
 
-                new Thread(()->{
-                    try {
-                        barrier.await();
-
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    } catch (BrokenBarrierException e) {
-                        e.printStackTrace();
-                    }
-                }).start();
-            
         }
     }
 }

@@ -51,7 +51,7 @@ public class T09_TestPhaser2 {
                     System.out.println();
                     return false;
                 case 3:
-                    System.out.println("婚礼结束！新郎新娘抱抱！" + registeredParties);
+                    System.out.println("婚礼结束！" + registeredParties);
                     return true;
                 default:
                     return true;
@@ -91,7 +91,7 @@ public class T09_TestPhaser2 {
         private void hug() {
             if(name.equals("新郎") || name.equals("新娘")) {
                 milliSleep(r.nextInt(1000));
-                System.out.printf("%s 洞房！\n", name);
+                System.out.printf("%s 进入洞房！\n", name);
                 phaser.arriveAndAwaitAdvance();
             } else {
                 phaser.arriveAndDeregister();

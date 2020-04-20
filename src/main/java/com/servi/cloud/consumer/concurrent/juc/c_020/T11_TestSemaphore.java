@@ -2,14 +2,17 @@ package com.servi.cloud.consumer.concurrent.juc.c_020;
 
 import java.util.concurrent.Semaphore;
 
+/**
+ * 用来做限流
+ */
 public class T11_TestSemaphore {
     public static void main(String[] args) {
         //Semaphore s = new Semaphore(2);
-        Semaphore s = new Semaphore(2, true);
+        Semaphore s = new Semaphore(1, true);
         //允许一个线程同时执行
         //Semaphore s = new Semaphore(1);
 
-        new Thread(()->{
+        new Thread(() -> {
             try {
                 s.acquire();
 
@@ -24,7 +27,7 @@ public class T11_TestSemaphore {
             }
         }).start();
 
-        new Thread(()->{
+        new Thread(() -> {
             try {
                 s.acquire();
 

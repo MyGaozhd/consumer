@@ -1,8 +1,11 @@
 package com.servi.cloud.consumer.concurrent.juc.c_018_00_AtomicXXX;
 
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.LongAdder;
 
+/**
+ * LongAdder: 50000000 time 161
+ * Sync: 50000000 time 2255
+ */
 public class T03_SyncVsLongAdder {
     static long count2 = 0L;
     static LongAdder count = new LongAdder();
@@ -25,9 +28,8 @@ public class T03_SyncVsLongAdder {
 
         long end = System.currentTimeMillis();
 
-        //TimeUnit.SECONDS.sleep(10);
-
         System.out.println("LongAdder: " + count.longValue() + " time " + (end-start));
+
         //-----------------------------------------------------------
         Object lock = new Object();
 
@@ -53,17 +55,6 @@ public class T03_SyncVsLongAdder {
 
         end = System.currentTimeMillis();
 
-
         System.out.println("Sync: " + count2 + " time " + (end-start));
-
     }
-
-    static void microSleep(int m) {
-        try {
-            TimeUnit.MICROSECONDS.sleep(m);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
 }
