@@ -20,17 +20,17 @@ import java.util.Map;
  * ["a","a","b"]
  * ]
  */
-public class _8 {
+public class _08 {
 
     public static void main(String[] args) {
 
-        List<List<String>> ll = new _8().partition("ccd");
+        List<List<String>> ll = new _08().partition("ccd");
         System.out.println(ll.toString());
 
-        List<List<String>> lll = new _8().partition("abb");
+        List<List<String>> lll = new _08().partition("abb");
         System.out.println(lll.toString());
 //
-        List<List<String>> llll = new _8().partition("aabb");
+        List<List<String>> llll = new _08().partition("aabb");
         System.out.println(llll.toString());
     }
 

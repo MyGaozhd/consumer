@@ -20,7 +20,7 @@ import java.util.Map;
  * 输入: [4,1,2,1,2]
  * 输出: 4
  */
-public class _1 {
+public class _01 {
 
     public static void main(String[] args) {
 

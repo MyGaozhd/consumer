@@ -40,7 +40,7 @@ package com.servi.cloud.consumer.algorithm;
  * 1 <= K <= 100
  * 1 <= N <= 10000
  */
-public class _5 {
+public class _05 {
 
 
 }

@@ -18,12 +18,12 @@ import java.util.Map;
  * 输入: "race a car"
  * 输出: false
  */
-public class _6 {
+public class _06 {
 
     private String a = "0123456789qwertyuioplkjhgfdsazxcvbnm";
 
     public static void main(String[] args) {
-        System.out.println(new _6().isPalindrome("A man, a plan, a canal: Panama"));
+        System.out.println(new _06().isPalindrome("A man, a plan, a canal: Panama"));
     }
 
     public boolean isPalindrome(String s) {

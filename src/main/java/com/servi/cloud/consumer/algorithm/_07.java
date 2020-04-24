@@ -10,7 +10,7 @@ package com.servi.cloud.consumer.algorithm;
  *  目标结果落在大于等于计算结果的节点上。
  *
  */
-public class _7 {
+public class _07 {
 
 
 

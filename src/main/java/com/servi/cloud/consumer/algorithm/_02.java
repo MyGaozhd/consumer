@@ -18,7 +18,7 @@ import java.util.Map;
  * 输入: [2,2,1,1,1,2,2]
  * 输出: 2
  */
-public class _2 {
+public class _02 {
 
     public static void main(String[] args) {
         System.out.println("" + serch1(new int[]{6, 5, 5}));

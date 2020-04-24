@@ -16,7 +16,7 @@ package com.servi.cloud.consumer.algorithm;
  * <p>
  * 输出: [1,2,2,3,5,6]
  */
-public class _4 {
+public class _04 {
 
     private static int[] nums_1 = new int[]{1, 2, 3, 0, 0, 0};
     private static int[] nums_2 = new int[]{2, 5, 6};
