@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * 斐波那契数列
  */
-public class FB {
+public class _15 {
 
     public static void main(String[] args) {
         for (int i = 0; i < 20; i++) {

@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 /**
  * 求解x的n次方的问题
  */
-public class Pow {
+public class _16 {
 
     public static void main(String[] args) {
         BigDecimal x = new BigDecimal(2);
