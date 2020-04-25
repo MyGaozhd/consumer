@@ -2,6 +2,10 @@ package com.servi.cloud.consumer.concurrent.juc._17;
 
 import java.util.concurrent.Exchanger;
 
+/**
+ * 两个线程之间互相交换数据
+ * Exchanger 必须两个线程之间
+ */
 public class T12_TestExchanger {
 
     static Exchanger<String> exchanger = new Exchanger<>();

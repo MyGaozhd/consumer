@@ -5,6 +5,9 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
+/**
+ * 缓存的插入删除 与 读取
+ */
 public class T10_TestReadWriteLock {
     private static int value;
 
@@ -21,12 +24,12 @@ public class T10_TestReadWriteLock {
         for (int i = 0; i < 2; i++) new Thread(writeR).start();
     }
 
+    //模拟读取操作
     public static void read(Lock lock) {
         try {
             lock.lock();
             Thread.sleep(1000);
             System.out.println("read over!");
-            //模拟读取操作
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
@@ -34,13 +37,13 @@ public class T10_TestReadWriteLock {
         }
     }
 
+    //模拟写操作
     public static void write(Lock lock, int v) {
         try {
             lock.lock();
             Thread.sleep(1000);
             value = v;
             System.out.println("write over!");
-            //模拟写操作
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {

@@ -16,6 +16,7 @@ public class T {
         M m = (M)unsafe.allocateInstance(M.class);
         m.i = 9;
         System.out.println(m.i);
+       unsafe.fullFence();
     }
 }
 
