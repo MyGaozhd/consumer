@@ -4,7 +4,7 @@
  *     一个对象是否有虚引用的存在，完全不会对其生存时间构成影响，
  *     也无法通过虚引用来获取一个对象的实例。
  *     为一个对象设置虚引用关联的唯一目的就是能在这个对象被收集器回收时收到一个系统通知。
- *     虚引用和弱引用对关联对象的回收都不会产生影响，如果只有虚引用活着弱引用关联着对象，
+ *     虚引用和弱引用对关联对象的回收都不会产生影响，如果只有虚引用或者弱引用关联着对象，
  *     那么这个对象就会被回收。它们的不同之处在于弱引用的get方法，虚引用的get方法始终返回null,
  *     弱引用可以使用ReferenceQueue,虚引用必须配合ReferenceQueue使用。
  *
@@ -29,12 +29,13 @@ import java.lang.ref.ReferenceQueue;
 import java.util.LinkedList;
 import java.util.List;
 
-public class T04_PhantomReference {
+public class T04_PhantomReference_1 {
     private static final List<Object> LIST = new LinkedList<>();
     private static final ReferenceQueue<M> QUEUE = new ReferenceQueue<>();
 
     public static void main(String[] args) {
-        PhantomReference<M> phantomReference = new PhantomReference<>(new M(), QUEUE);
+        M m = new M();
+        PhantomReference<M> phantomReference = new PhantomReference<>(m, QUEUE);
         new Thread(() -> {
             while (true) {
                 LIST.add(new byte[1024 * 1024]);
