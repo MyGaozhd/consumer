@@ -26,6 +26,11 @@ public class T06_00_sync_wait_notify {
         }, "t1").start();
 
         new Thread(()->{
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             synchronized (o) {
                 for(char c : aC) {
                     System.out.print(c);

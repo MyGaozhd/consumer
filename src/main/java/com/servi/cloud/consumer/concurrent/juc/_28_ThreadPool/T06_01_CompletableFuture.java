@@ -5,11 +5,14 @@
 
 package com.servi.cloud.consumer.concurrent.juc._28_ThreadPool;
 
+import com.servi.cloud.consumer.concurrent.juc._21_RefTypeAndThreadLocal.M;
+
 import java.io.IOException;
 import java.util.Random;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
 
 public class T06_01_CompletableFuture {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
@@ -26,17 +29,16 @@ public class T06_01_CompletableFuture {
 
         start = System.currentTimeMillis();
 
-        CompletableFuture<Double> futureTM = CompletableFuture.supplyAsync(()->priceOfTM());
-        CompletableFuture<Double> futureTB = CompletableFuture.supplyAsync(()->priceOfTB());
-        CompletableFuture<Double> futureJD = CompletableFuture.supplyAsync(()->priceOfJD());
+        CompletableFuture<Double> futureTM = CompletableFuture.supplyAsync(() -> priceOfTM());
+        CompletableFuture<Double> futureTB = CompletableFuture.supplyAsync(() -> priceOfTB());
+        CompletableFuture<Double> futureJD = CompletableFuture.supplyAsync(() -> priceOfJD());
 
         CompletableFuture.allOf(futureTM, futureTB, futureJD).join();
 
-        CompletableFuture.supplyAsync(()->priceOfTM())
+        CompletableFuture.supplyAsync(() -> priceOfTM())
                 .thenApply(String::valueOf)
-                .thenApply(str-> "price " + str)
+                .thenApply(str -> "price " + str)
                 .thenAccept(System.out::println);
-
 
         end = System.currentTimeMillis();
         System.out.println("use completable future! " + (end - start));
