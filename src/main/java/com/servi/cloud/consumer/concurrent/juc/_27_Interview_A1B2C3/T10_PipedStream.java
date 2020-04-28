@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
 
-public class T10_00_PipedStream {
+public class T10_PipedStream {
 
 
 

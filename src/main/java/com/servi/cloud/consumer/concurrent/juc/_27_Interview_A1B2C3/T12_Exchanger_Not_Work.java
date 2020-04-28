@@ -2,7 +2,7 @@ package com.servi.cloud.consumer.concurrent.juc._27_Interview_A1B2C3;
 
 import java.util.concurrent.Exchanger;
 
-public class T12_00_Exchanger_Not_Work {
+public class T12_Exchanger_Not_Work {
     private static Exchanger<String> exchanger = new Exchanger<>();
 
     public static void main(String[] args) {

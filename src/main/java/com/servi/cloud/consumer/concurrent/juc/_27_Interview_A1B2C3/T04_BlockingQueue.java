@@ -5,7 +5,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.locks.LockSupport;
 
-public class T04_00_BlockingQueue {
+public class T04_BlockingQueue {
 
 
     static BlockingQueue<String> q1 = new ArrayBlockingQueue(1);

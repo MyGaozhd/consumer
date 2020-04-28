@@ -21,19 +21,14 @@ public class T02_CopyOnWriteList {
 
 		for(int i=0; i<ths.length; i++) {
 			Runnable task = new Runnable() {
-
 				@Override
 				public void run() {
 					for(int i=0; i<1000; i++) lists.add("a" + r.nextInt(10000));
 				}
-
 			};
 			ths[i] = new Thread(task);
 		}
-
-
 		runAndComputeTime(ths);
-
 		System.out.println(lists.size());
 	}
 

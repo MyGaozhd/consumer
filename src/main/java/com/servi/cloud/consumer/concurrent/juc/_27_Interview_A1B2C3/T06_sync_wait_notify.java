@@ -1,7 +1,7 @@
 package com.servi.cloud.consumer.concurrent.juc._27_Interview_A1B2C3;
 
 
-public class T06_00_sync_wait_notify {
+public class T06_sync_wait_notify {
     public static void main(String[] args) {
         final Object o = new Object();
 

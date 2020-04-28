@@ -3,7 +3,7 @@ package com.servi.cloud.consumer.concurrent.juc._27_Interview_A1B2C3;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class T05_00_AtomicInteger {
+public class T05_AtomicInteger {
 
     static AtomicInteger threadNo = new AtomicInteger(1);
 

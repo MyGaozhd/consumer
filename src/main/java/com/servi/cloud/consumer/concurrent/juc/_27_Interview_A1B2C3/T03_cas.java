@@ -1,7 +1,7 @@
 package com.servi.cloud.consumer.concurrent.juc._27_Interview_A1B2C3;
 
 
-public class T03_00_cas {
+public class T03_cas {
 
     enum ReadyToRun {T1, T2}
 

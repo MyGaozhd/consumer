@@ -1,7 +1,7 @@
 package com.servi.cloud.consumer.concurrent.juc._27_Interview_A1B2C3;
 
 
-public class T07_00_sync_wait_notify {
+public class T07_sync_wait_notify {
 
     private static volatile boolean t2Started = false;
 
