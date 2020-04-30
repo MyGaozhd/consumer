@@ -3,7 +3,7 @@
  * 多线程环境下，写时效率低，读时效率高
  * 适合写少读多的环境
  */
-package com.servi.cloud.consumer.concurrent.juc._26;
+package com.servi.cloud.consumer.concurrent.juc._26_juc_containers;
 
 import java.util.Arrays;
 import java.util.List;

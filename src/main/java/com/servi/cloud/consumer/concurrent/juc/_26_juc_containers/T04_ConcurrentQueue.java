@@ -1,4 +1,4 @@
-package com.servi.cloud.consumer.concurrent.juc._26;
+package com.servi.cloud.consumer.concurrent.juc._26_juc_containers;
 
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;

@@ -3,7 +3,7 @@
  * 本例中由于m1锁定this,只有m1执行完毕的时候,m2才能执行
  * 这里是复习synchronized最原始的语义
  */
-package com.servi.cloud.consumer.concurrent.juc._17;
+package com.servi.cloud.consumer.concurrent.juc._17_juc_tool;
 
 import java.util.concurrent.TimeUnit;
 

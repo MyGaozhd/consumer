@@ -57,4 +57,20 @@ public class _18 {
         }
         return max;
     }
+
+
+    public int maxProduct1(int[] nums) {
+        int max = Integer.MIN_VALUE;
+        int imin = 1, imax = 1;
+        for (int i = 0; i < nums.length; i++) {
+            int c = nums[i];
+            if (c > 0) {
+                imax = imax * c;
+            } else {
+
+            }
+
+        }
+        return max;
+    }
 }

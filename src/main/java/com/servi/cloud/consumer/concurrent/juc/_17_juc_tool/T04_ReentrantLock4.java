@@ -3,7 +3,7 @@
  * 使用ReentrantLock还可以调用lockInterruptibly方法，可以对线程interrupt方法做出响应，
  * 在一个线程等待锁的过程中，可以被打断
  */
-package com.servi.cloud.consumer.concurrent.juc._17;
+package com.servi.cloud.consumer.concurrent.juc._17_juc_tool;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;

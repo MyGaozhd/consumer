@@ -1,7 +1,7 @@
 /**
  * ReentrantLock还可以指定为公平锁
  */
-package com.servi.cloud.consumer.concurrent.juc._17;
+package com.servi.cloud.consumer.concurrent.juc._17_juc_tool;
 
 import java.util.concurrent.locks.ReentrantLock;
 
