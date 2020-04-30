@@ -1,14 +1,15 @@
 package com.servi.cloud.consumer.concurrent.juc._17_juc_tool;
 
+import java.util.Arrays;
 import java.util.concurrent.CountDownLatch;
 
 public class T06_TestCountDownLatch {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         usingJoin();
         usingCountDownLatch();
     }
 
-    private static void usingCountDownLatch() {
+    private static void usingCountDownLatch() throws InterruptedException {
         Thread[] threads = new Thread[100];
         CountDownLatch latch = new CountDownLatch(threads.length);
 
@@ -19,16 +20,9 @@ public class T06_TestCountDownLatch {
                 latch.countDown();
             });
         }
+        Arrays.stream(threads).forEach(thread -> thread.start());
 
-        for (int i = 0; i < threads.length; i++) {
-            threads[i].start();
-        }
-
-        try {
-            latch.await();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        latch.await();
 
         System.out.println("end latch");
     }
