@@ -40,7 +40,7 @@ public class T02_VolatileReference1 {
         T.running = false;
 
         // 测试 然后看现象
-//        T = new T02_VolatileReference1(false);
-//        T = null;
+//        T01_Functional = new T02_VolatileReference1(false);
+//        T01_Functional = null;
     }
 }
