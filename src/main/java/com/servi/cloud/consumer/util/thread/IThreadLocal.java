@@ -5,6 +5,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 模拟threadlocal
+ *
  * @param <T>
  */
 public class IThreadLocal<T> {

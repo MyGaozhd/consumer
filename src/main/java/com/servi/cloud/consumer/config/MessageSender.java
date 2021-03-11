@@ -19,7 +19,7 @@ public class MessageSender {
         this.amqpTemplate.convertAndSend("sty", msg);
     }
 
-    class post implements MessagePostProcessor{
+    class post implements MessagePostProcessor {
 
         @Override
         public Message postProcessMessage(Message message) throws AmqpException {

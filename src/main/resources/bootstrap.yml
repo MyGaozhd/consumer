@@ -6,7 +6,7 @@ eureka:
       token: 123456a
   client:
     service-url:
-     defaultZone: http://localhost:8888/eureka
+      defaultZone: http://localhost:8888/eureka
 spring:
   application:
     name: consumer

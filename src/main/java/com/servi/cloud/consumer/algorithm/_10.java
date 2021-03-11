@@ -66,7 +66,7 @@ public class _10 {
 
 //        Set<String> wordDict = new HashSet<>();
         Set<String> swordDict = new HashSet<>();
-        for (int i = 0; i <wordDict.size() ; i++) {
+        for (int i = 0; i < wordDict.size(); i++) {
             swordDict.addAll(wordDict);
         }
 
@@ -75,6 +75,7 @@ public class _10 {
     public List<String> wordBreak(String s, Set<String> wordDict) {
         return word_Break(s, wordDict, 0);
     }
+
     HashMap<Integer, List<String>> map = new HashMap<>();
 
     public List<String> word_Break(String s, Set<String> wordDict, int start) {

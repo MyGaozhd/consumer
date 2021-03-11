@@ -5,9 +5,11 @@ package com.servi.cloud.consumer.concurrent.q;
  */
 public class Q1_3 {
     boolean retry = true;
+
     private void retry() {
         System.out.println(" retry start ");
-        while (retry){}
+        while (retry) {
+        }
         System.out.println(" retry end ");
     }
 

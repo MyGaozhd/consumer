@@ -18,6 +18,6 @@ public class T03_Consumer {
     }
 
     void two(Consumer<String> c) {
-        c.andThen(t-> System.out.println(t)).accept("123");
+        c.andThen(t -> System.out.println(t)).accept("123");
     }
 }

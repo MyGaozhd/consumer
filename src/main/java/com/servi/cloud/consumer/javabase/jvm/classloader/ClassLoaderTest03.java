@@ -4,11 +4,11 @@ package com.servi.cloud.consumer.javabase.jvm.classloader;
  * 类的加载过程：
  * 加载
  * 连接
- *    验证
- *    准备
- *    解析
+ * 验证
+ * 准备
+ * 解析
  * 初始化
- *
+ * <p>
  * 输出结果：
  * 1
  * 1
@@ -34,6 +34,7 @@ class Parent3 {
     public static int a;
     public static Parent3 instance = new Parent3();
     public static int b = 0;
+
     public Parent3() {
         a++;
         b++;

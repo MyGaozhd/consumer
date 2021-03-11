@@ -8,11 +8,11 @@ public class T {
         T.run(new TT());
     }
 
-    public static  <E extends  Runnable & Callable> void run (E e){
+    public static <E extends Runnable & Callable> void run(E e) {
 
     }
 
-    static class  TT implements Runnable,Callable{
+    static class TT implements Runnable, Callable {
 
         @Override
         public void run() {

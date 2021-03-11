@@ -4,12 +4,10 @@ import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
 /**
- *
  * 网络通信
- *
+ * <p>
  * 比如说一种统计场景 统计信息不是很重要而且不需要很准确 而且数据量很大 每次都提交网络浪费链接资源
  * 20条 统计一起发送网络
- *
  */
 public class T07_TestCyclicBarrier {
     public static void main(String[] args) {

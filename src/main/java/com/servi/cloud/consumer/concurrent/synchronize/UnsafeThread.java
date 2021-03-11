@@ -7,8 +7,8 @@ public class UnsafeThread {
 
     public static void main(String[] args) {
         NameHolder holder = new NameHolder();
-        Thread threada = new TestThread(holder,"a");
-        Thread threadb = new TestThread(holder,"b");
+        Thread threada = new TestThread(holder, "a");
+        Thread threadb = new TestThread(holder, "b");
         threada.start();
         threadb.start();
     }

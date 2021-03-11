@@ -29,7 +29,7 @@ public class Main {
 
         ByteBuffer bb = ByteBuffer.allocate(8);
 
-        for(long l = 0; true; l++) {
+        for (long l = 0; true; l++) {
             bb.putLong(0, 1);
 
             producer.onData(bb);

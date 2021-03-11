@@ -5,7 +5,7 @@ import org.springframework.context.annotation.FilterType;
 
 import java.util.ArrayList;
 
-@ComponentScan(includeFilters = {@ComponentScan.Filter(type= FilterType.ANNOTATION)})
+@ComponentScan(includeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION)})
 public class ArrayTest {
     public static void main(String[] args) {
         ArrayList list = null;

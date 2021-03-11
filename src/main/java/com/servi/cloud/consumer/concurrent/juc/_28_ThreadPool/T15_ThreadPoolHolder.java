@@ -17,7 +17,7 @@ public class T15_ThreadPoolHolder {
             System.out.println(Thread.currentThread().getName());
         };
 
-        for (int i = 0; i <20 ; i++) {
+        for (int i = 0; i < 20; i++) {
             T15_ThreadPoolHolder.getInstance().exec(r);
         }
         //T15_ThreadPoolHolder.getInstance().exe.allowCoreThreadTimeOut(true);

@@ -12,17 +12,21 @@ public class Q2 {
             Q2.State state = new Q2.State();
             ThreadA threadA = new ThreadA(state);
             ThreadB threadB = new ThreadB(state);
-            threadA.start(); threadB.start();
-            threadA.join(); threadB.join();
+            threadA.start();
+            threadB.start();
+            threadA.join();
+            threadB.join();
         }
         System.out.println(i);
     }
 
     static class ThreadA extends Thread {
         private final Q2.State state;
+
         ThreadA(Q2.State state) {
             this.state = state;
         }
+
         public void run() {
             state.a = 1;
             state.b = 1;
@@ -33,9 +37,11 @@ public class Q2 {
 
     static class ThreadB extends Thread {
         private final Q2.State state;
+
         ThreadB(Q2.State state) {
             this.state = state;
         }
+
         public void run() {
             if (state.b == 1 && state.a == 0) {
                 System.out.println("b=1");

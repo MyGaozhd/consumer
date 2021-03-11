@@ -8,7 +8,9 @@ package com.servi.cloud.consumer.javabase.java8.functional;
 public interface T01_Functional {
     public static void main(String[] args) {
         //lamda 不允许重载default方法
-        T01_Functional t = ()->{System.out.println("one");};
+        T01_Functional t = () -> {
+            System.out.println("one");
+        };
 
         // 内部类允许重载two方法
         T01_Functional t1 = new T01_Functional() {
@@ -25,9 +27,10 @@ public interface T01_Functional {
         t.one();
         t.two();
     }
+
     public void one();
 
-   public default void two(){
+    public default void two() {
         System.out.println("two");
     }
 }

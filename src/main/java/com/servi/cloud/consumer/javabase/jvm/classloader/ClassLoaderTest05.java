@@ -11,15 +11,17 @@ public class ClassLoaderTest05 {
     }
 }
 
-class Parent5{
+class Parent5 {
     static int a = 5;
+
     static {
         System.out.println("Parent5");
     }
 }
 
-class Child5 extends  Parent5{
-    static int b= 4;
+class Child5 extends Parent5 {
+    static int b = 4;
+
     static {
         System.out.println("Child5");
     }

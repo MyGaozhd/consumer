@@ -12,7 +12,7 @@ public class DemoConfig {
 
     @Scope("singleton")
     @Bean(value = "user1")
-    public User user(){
+    public User user() {
         return new User();
     }
 }

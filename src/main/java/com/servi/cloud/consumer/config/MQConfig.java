@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 public class MQConfig {
 
     @Bean
-    public Queue queue(){
-        return  new Queue("sty");
+    public Queue queue() {
+        return new Queue("sty");
     }
 }

@@ -9,6 +9,7 @@ import java.util.concurrent.locks.LockSupport;
 public class T02_LockSupport_1 {
 
     static Thread t1 = null, t2 = null;
+
     public static void main(String[] args) throws Exception {
 
         char[] aI = "1234567".toCharArray();
@@ -30,7 +31,7 @@ public class T02_LockSupport_1 {
             @Override
             public void run() {
                 LockSupport.park();
-                for (int i = 0; i < aI.length ; i++) {
+                for (int i = 0; i < aI.length; i++) {
                     System.out.print(aI[i]);
                     LockSupport.unpark(t1);
                     LockSupport.park();

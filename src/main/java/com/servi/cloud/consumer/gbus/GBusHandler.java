@@ -39,7 +39,7 @@ public class GBusHandler implements InvocationHandler {
                 }
             }
         }
-        if (operateMethod == null){
+        if (operateMethod == null) {
 
         }
 

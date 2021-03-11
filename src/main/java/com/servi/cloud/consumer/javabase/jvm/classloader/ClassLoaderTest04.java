@@ -1,6 +1,7 @@
 package com.servi.cloud.consumer.javabase.jvm.classloader;
 
-/**输出结果：
+/**
+ * 输出结果：
  * 5
  * Parent4_1 初始化
  * 5
@@ -14,6 +15,7 @@ public class ClassLoaderTest04 {
         System.out.println(Child4_1.a);
     }
 }
+
 interface Parent4 {
     public static Thread t = new Thread() {
         {
@@ -21,9 +23,11 @@ interface Parent4 {
         }
     };
 }
+
 class Child4 implements Parent4 {
     public static int a = 5;
 }
+
 class Parent4_1 {
     public static Thread t = new Thread() {
         {
@@ -31,6 +35,7 @@ class Parent4_1 {
         }
     };
 }
+
 class Child4_1 extends Parent4_1 {
     public static int a = 5;
 }

@@ -4,7 +4,7 @@ import sun.reflect.Reflection;
 
 public class T {
 
-    public T(){
+    public T() {
         System.out.println(Reflection.getCallerClass(0));
         System.out.println(Reflection.getCallerClass(1));
         System.out.println(Reflection.getCallerClass(2));

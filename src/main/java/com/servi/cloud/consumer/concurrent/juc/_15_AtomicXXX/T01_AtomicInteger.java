@@ -10,37 +10,37 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 
 public class T01_AtomicInteger {
-	/*volatile*/ //int count1 = 0;
-	
-	AtomicInteger count = new AtomicInteger(0); 
+    /*volatile*/ //int count1 = 0;
 
-	/*synchronized*/ void m() { 
-		for (int i = 0; i < 10000; i++)
-			//if count1.get() < 1000
-			count.incrementAndGet(); //count1++
-	}
+    AtomicInteger count = new AtomicInteger(0);
 
-	public static void main(String[] args) {
-		T01_AtomicInteger t = new T01_AtomicInteger();
+    /*synchronized*/ void m() {
+        for (int i = 0; i < 10000; i++)
+            //if count1.get() < 1000
+            count.incrementAndGet(); //count1++
+    }
 
-		List<Thread> threads = new ArrayList<Thread>();
+    public static void main(String[] args) {
+        T01_AtomicInteger t = new T01_AtomicInteger();
 
-		for (int i = 0; i < 10; i++) {
-			threads.add(new Thread(t::m, "thread-" + i));
-		}
+        List<Thread> threads = new ArrayList<Thread>();
 
-		threads.forEach((o) -> o.start());
+        for (int i = 0; i < 10; i++) {
+            threads.add(new Thread(t::m, "thread-" + i));
+        }
 
-		threads.forEach((o) -> {
-			try {
-				o.join();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		});
+        threads.forEach((o) -> o.start());
 
-		System.out.println(t.count);
+        threads.forEach((o) -> {
+            try {
+                o.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
 
-	}
+        System.out.println(t.count);
+
+    }
 
 }

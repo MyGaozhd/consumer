@@ -9,6 +9,7 @@ public class EchoClient {
     public static void main(String[] args) throws IOException {
         new EchoClient().connect();
     }
+
     private Socket client;
 
     public void connect() throws IOException {

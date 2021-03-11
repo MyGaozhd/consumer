@@ -95,8 +95,8 @@ public class InterruptThread {
         @Override
         public void run() {
             super.run();
-            int i=0;
-            while (true){
+            int i = 0;
+            while (true) {
                 if (this.isInterrupted()) {
                     System.out.println("外部结束：" + i++);
                     return;

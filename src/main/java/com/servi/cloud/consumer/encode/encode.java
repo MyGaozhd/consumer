@@ -12,7 +12,7 @@ public class encode {
 //        String a = ImageToBase64("C:\\Users\\Administrator\\Desktop\\20b9ea9a8122e82e451bd3eaee2605d.jpg");
 //        Base64ToImage(a, "C:\\Users\\Administrator\\Desktop\\a.jpg");
         try {
-            System.out.println( new BASE64Encoder().encode("NCCsscgxyx".getBytes("utf-8")));
+            System.out.println(new BASE64Encoder().encode("NCCsscgxyx".getBytes("utf-8")));
             System.out.println(new BASE64Encoder().encode("NCCssctcyx".getBytes("utf-8")));
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();

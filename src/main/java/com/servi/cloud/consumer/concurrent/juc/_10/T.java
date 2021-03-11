@@ -5,23 +5,23 @@
 package com.servi.cloud.consumer.concurrent.juc._10;
 
 public class T {
-	synchronized void m() {
-		System.out.println("m start");
+    synchronized void m() {
+        System.out.println("m start");
 
-		System.out.println("m end");
-	}
-	
-	public static void main(String[] args) {
-		new TT().m();
-	}
-	
+        System.out.println("m end");
+    }
+
+    public static void main(String[] args) {
+        new TT().m();
+    }
+
 }
 
 class TT extends T {
-	@Override
-	synchronized void m() {
-		System.out.println("child m start");
-		super.m();
-		System.out.println("child m end");
-	}
+    @Override
+    synchronized void m() {
+        System.out.println("child m start");
+        super.m();
+        System.out.println("child m end");
+    }
 }

@@ -8,9 +8,9 @@ public class T06_sync_wait_notify {
         char[] aI = "1234567".toCharArray();
         char[] aC = "ABCDEFG".toCharArray();
 
-        new Thread(()->{
+        new Thread(() -> {
             synchronized (o) {
-                for(char c : aI) {
+                for (char c : aI) {
                     System.out.print(c);
                     try {
                         o.notify();
@@ -25,14 +25,14 @@ public class T06_sync_wait_notify {
 
         }, "t1").start();
 
-        new Thread(()->{
+        new Thread(() -> {
             try {
                 Thread.sleep(3000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             synchronized (o) {
-                for(char c : aC) {
+                for (char c : aC) {
                     System.out.print(c);
                     try {
                         o.notify();

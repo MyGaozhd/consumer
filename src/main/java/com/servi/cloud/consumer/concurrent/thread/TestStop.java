@@ -21,7 +21,7 @@ public class TestStop {
         @Override
         public void run() {
             super.run();
-            for (int i = 0; i <500 ; i++) {
+            for (int i = 0; i < 500; i++) {
                 System.out.println("MyThread run方法：" + i);
             }
         }

@@ -7,9 +7,11 @@ import java.util.concurrent.atomic.AtomicBoolean;
  */
 public class Q1_4 {
     AtomicBoolean retry = new AtomicBoolean(true);
+
     private void retry() {
         System.out.println(" retry start ");
-        while (retry.get()){}
+        while (retry.get()) {
+        }
         System.out.println(" retry end ");
     }
 
@@ -22,7 +24,7 @@ public class Q1_4 {
         //等待 1 秒
         Thread.sleep(1000);
         //停止 retry
-        q.retry.compareAndSet(true,false);
+        q.retry.compareAndSet(true, false);
         System.out.println(" set retry stop ");
         // 等待线程执行结束
         t1.join();

@@ -10,7 +10,6 @@ import java.util.concurrent.atomic.AtomicInteger;
  * 线程池 在线程工厂【efaultThreadFactory】创建线程时，如果设置了setUncaughtExceptionHandler，则如果线程出现异常，会被setUncaughtExceptionHandler捕获，并在子线程中捕获，前提是执行的是 runnable，
  * beforeExecute 和 afterExecute 内的异常同样会被setUncaughtExceptionHandler捕获
  * 线程池 如果接受 future任务，只有在get时 捕获异常，不会被setUncaughtExceptionHandler 捕获异常。
- *
  */
 public class ThreadPoolCatchExceptionTest {
     ThreadLocal<Integer> threadLocal = new ThreadLocal<>();

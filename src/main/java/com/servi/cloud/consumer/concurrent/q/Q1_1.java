@@ -4,10 +4,12 @@ package com.servi.cloud.consumer.concurrent.q;
  * 缓存带来的可见性问题
  */
 public class Q1_1 {
-   volatile boolean retry = true;
+    volatile boolean retry = true;
+
     private void retry() {
         System.out.println(" retry start ");
-        while (retry){}
+        while (retry) {
+        }
         System.out.println(" retry end ");
     }
 

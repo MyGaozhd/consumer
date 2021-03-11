@@ -32,7 +32,7 @@ public class ServiClassLoader extends ClassLoader {
         InputStream in = null;
         ByteArrayOutputStream baos = null;
         try {
-            in = new FileInputStream(new File(path + "\\"+ className + classExtention));
+            in = new FileInputStream(new File(path + "\\" + className + classExtention));
             byte[] bytes = null;
             baos = new ByteArrayOutputStream();
             int ch = 0;

@@ -73,12 +73,12 @@ public class AnnotationHandler implements InvocationHandler {
 
         if (target.getClass().isAnnotationPresent(AnnotationClass.class)) {
             AnnotationClass annotationClass = target.getClass().getAnnotation(AnnotationClass.class);
-            ServiLogger.log("checkTarget-AnnotationClass:" + annotationClass.getClass().getCanonicalName() + "-" );
+            ServiLogger.log("checkTarget-AnnotationClass:" + annotationClass.getClass().getCanonicalName() + "-");
         }
 
         if (target.getClass().isAnnotationPresent(AbstractAnnotionCheck.class)) {
             AbstractAnnotionCheck annotationClass = target.getClass().getAnnotation(AbstractAnnotionCheck.class);
-            ServiLogger.log("checkTarget-AbstractAnnotionCheck:" + annotationClass.getClass().getCanonicalName() + "- kkk" );
+            ServiLogger.log("checkTarget-AbstractAnnotionCheck:" + annotationClass.getClass().getCanonicalName() + "- kkk");
         }
     }
 

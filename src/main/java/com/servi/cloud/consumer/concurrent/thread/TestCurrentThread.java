@@ -20,8 +20,8 @@ public class TestCurrentThread {
         @Override
         public void run() {
             super.run();
-            System.out.println("MyThread run方法："+this.currentThread().getName());
-            System.out.println("MyThread run方法--："+this.getName());
+            System.out.println("MyThread run方法：" + this.currentThread().getName());
+            System.out.println("MyThread run方法--：" + this.getName());
             System.out.println("mythread 执行结束。");
         }
     }
@@ -37,8 +37,8 @@ public class TestCurrentThread {
         @Override
         public void run() {
             super.run();
-            System.out.println("MyThread run方法："+this.currentThread().getName());
-            System.out.println("MyThread run方法--："+this.getName());
+            System.out.println("MyThread run方法：" + this.currentThread().getName());
+            System.out.println("MyThread run方法--：" + this.getName());
             System.out.println("mythread 执行结束。");
         }
     }

@@ -58,7 +58,7 @@ public class XfireTest {
 
         ServiLogger.log("\r\n ======================");
 
-        List<Map<String, Object>> fileStructList = getFileStruct(result,"1002111000000110CM2Z");
+        List<Map<String, Object>> fileStructList = getFileStruct(result, "1002111000000110CM2Z");
 
         Map fileMap = new HashMap();
         fileMap.put("count", Integer.valueOf(fileStructList.size()));

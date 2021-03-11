@@ -6,8 +6,8 @@ public class Test {
         new TT();
     }
 
-   static class TT{
-        public TT(){
+    static class TT {
+        public TT() {
             new T();
         }
     }

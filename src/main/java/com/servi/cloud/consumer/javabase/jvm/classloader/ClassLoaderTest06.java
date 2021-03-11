@@ -6,7 +6,7 @@ public class ClassLoaderTest06 {
         ClassLoader classLoader = ClassLoader.getSystemClassLoader();
         System.out.println(classLoader);
 
-        while (classLoader!=null){
+        while (classLoader != null) {
             classLoader = classLoader.getParent();
             System.out.println(classLoader);
         }

@@ -20,7 +20,7 @@ public class _04 {
 
     private static int[] nums_1 = new int[]{1, 2, 3, 0, 0, 0};
     private static int[] nums_2 = new int[]{2, 5, 6};
-//    private static int[] nums_1 = new int[]{ 0};
+    //    private static int[] nums_1 = new int[]{ 0};
 //    private static int[] nums_2 = new int[]{1};
     private static int start1 = 0;
     private static int start2 = 0;
@@ -28,7 +28,7 @@ public class _04 {
     public static void main(String[] args) {
         int[] num = startmerge(nums_1, 3, nums_2, 3);
 
-        if (start2 <= nums_2.length - 1 ) {
+        if (start2 <= nums_2.length - 1) {
             int n = nums_2.length - 1;
             int m = nums_1.length - 1;
             while (n >= start2) {
@@ -40,11 +40,11 @@ public class _04 {
         String a = "[";
         for (int i = 0; i < num.length; i++) {
             a = a + num[i];
-            if (i !=num.length-1){
-                a=a+",";
+            if (i != num.length - 1) {
+                a = a + ",";
             }
         }
-        a=a+"]";
+        a = a + "]";
         System.out.println(a);
     }
 

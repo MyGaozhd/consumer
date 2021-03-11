@@ -33,7 +33,7 @@ public class _03 {
             if (in(a, value)) {
                 result = find(a, value);
             }
-            if (result){
+            if (result) {
                 break;
             }
         }
@@ -41,7 +41,7 @@ public class _03 {
     }
 
     public static boolean in(int[] args, int value) {
-        if (args==null||args.length<=0) return false;
+        if (args == null || args.length <= 0) return false;
         if (args[0] > value) return false;
         if (value > args[args.length - 1]) return false;
         return true;

@@ -11,13 +11,13 @@ public class T02_VolatileReference1 {
 
     volatile static T02_VolatileReference1 T = new T02_VolatileReference1(true);
 
-    public  T02_VolatileReference1 (boolean running) {
+    public T02_VolatileReference1(boolean running) {
         this.running = running;
     }
 
     void m() {
         System.out.println("m start");
-        while(running) {
+        while (running) {
 			/*
 			try {
 				TimeUnit.MILLISECONDS.sleep(10);

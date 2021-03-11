@@ -16,7 +16,7 @@ public class ConsumerApplicationTests {
     public void contextLoads() {
 
         Map<String, String> map = new HashMap<>();
-        map.put("","");
+        map.put("", "");
 
     }
 

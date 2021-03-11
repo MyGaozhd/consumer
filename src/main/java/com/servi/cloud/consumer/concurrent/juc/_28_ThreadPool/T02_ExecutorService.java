@@ -7,7 +7,7 @@ package com.servi.cloud.consumer.concurrent.juc._28_ThreadPool;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class T02_ExecutorService  {
+public class T02_ExecutorService {
     public static void main(String[] args) {
         ExecutorService e = Executors.newCachedThreadPool();
     }

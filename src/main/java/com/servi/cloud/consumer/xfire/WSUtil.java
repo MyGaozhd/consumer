@@ -9,7 +9,6 @@ import org.codehaus.xfire.client.Client;
 
 /**
  * webservice调用方法工具类
- *
  */
 public class WSUtil {
 
@@ -29,7 +28,7 @@ public class WSUtil {
 //			WSClient.trustAllHttpsCertificates();//添加对https的支持
             client = new Client(new URL(url));
             resultObjects = client.invoke(method, new Object[]{request});
-      //      ServiLogger.log("返回报文：" + (String) resultObjects[0]);
+            //      ServiLogger.log("返回报文：" + (String) resultObjects[0]);
         } catch (MalformedURLException e) {
             e.printStackTrace();
             ServiLogger.log(e.getMessage());
